@@ -1,0 +1,33 @@
+<h1>User List</h1>
+
+<table style="min-width: 100%; border: 1px solid #ccc">
+  <thead style="background-color: #f3f4f6">
+    <tr>
+      @for (header of headers; track header) {
+        <th style="padding: 8px; text-align: left">
+          {{ header.charAt(0).toUpperCase() + header.slice(1) }}
+        </th>
+      }
+    </tr>
+  </thead>
+  <tbody>
+    @for (user of users; track user.id) {
+      <tr
+        (click)="onRowClick(user)"
+        style="cursor: pointer"
+        onmouseover="this.style.backgroundColor='#f9fafb'"
+        onmouseout="this.style.backgroundColor=''"
+      >
+        @for (header of headers; track header) {
+          <td style="padding: 8px">
+            <input
+              [(ngModel)]="user[header]"
+              style="width: 90%; border: 1px solid #ccc; border-radius: 4px; padding: 2px 4px"
+              (click)="$event.stopPropagation()"
+            />
+          </td>
+        }
+      </tr>
+    }
+  </tbody>
+</table>

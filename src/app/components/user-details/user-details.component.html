@@ -1,0 +1,23 @@
+<div>
+  <h1>User Details</h1>
+  @if (user) {
+  <div class="user-details-card"
+  >
+    <h3 class="user-details-name">{{ user.name }}</h3>
+    <table class="user-details-table">
+      <tbody>
+        <tr *ngFor="let key of user | keyvalue">
+          <td class="user-details-key">
+            {{ key.key.charAt(0).toUpperCase() + key.key.slice(1) }}:
+          </td>
+          <td class="user-details-value">
+            {{ key.value }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  } @else {
+  <p>Loading user details...</p>
+  }
+</div>
